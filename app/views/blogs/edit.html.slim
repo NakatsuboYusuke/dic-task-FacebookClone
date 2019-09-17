@@ -1,0 +1,13 @@
+.tit
+  h2 投稿を編集
+.content
+  = form_with model: @blog, url: blogs_path, local: true do |form|
+    - if @blog.errors.any?
+      .error_content
+        ul
+          - @blog.errors.full_messages.each do |message|
+            li = message
+    .post
+      = form.text_area :content
+    .btn
+      = form.submit "保存", class: "submit_btn"
