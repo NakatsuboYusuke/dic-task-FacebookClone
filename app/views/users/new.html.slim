@@ -1,0 +1,32 @@
+- if @user.errors.any?
+  .error
+    ul
+      - @user.errors.full_messages.each do |message|
+        li = message
+.tit
+  h2 新規アカウントを作成
+  p 簡単に登録できます。
+.content
+  = form_with model: @user, local: true do |form|
+    .name
+      = form.text_field :first_name, placeholder: "姓"
+      = form.text_field :last_name, placeholder: "名"
+    .email
+      = form.email_field :email, placeholder: "メールアドレス"
+    .password
+      = form.password_field :password, placeholder: "パスワード"
+    .password_confirmation
+      = form.password_field :password_confirmation, placeholder: "確認用パスワード"
+    .birthday
+      p 誕生日
+      = form.date_select(:birthday, start_year: 1930, end_year: (Time.now.year), default: Date.new(1989, 1, 1))
+    .gender
+      p 性別
+      = form.label :gender, :"女性"
+      = form.radio_button :gender, :"女性"
+      = form.label :gender, :"男性"
+      = form.radio_button :gender, :"男性"
+      = form.label :gender, :"カスタム"
+      = form.radio_button :gender, :"カスタム"
+    .btn
+      = form.submit "アカウント登録"
