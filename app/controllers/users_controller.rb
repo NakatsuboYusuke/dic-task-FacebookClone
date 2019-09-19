@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    
   end
 
   private
@@ -30,4 +29,5 @@ class UsersController < ApplicationController
     def set_users
       @user = User.find(params[:id])
     end
+
 end

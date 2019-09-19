@@ -1,4 +1,9 @@
 class HomesController < ApplicationController
-  def new
+
+  # skip_before_action
+  skip_before_action :login_required
+
+  def index
   end
+
 end

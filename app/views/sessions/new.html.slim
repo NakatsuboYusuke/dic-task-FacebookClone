@@ -1,2 +1,10 @@
-h1 Sessions#new
-p Find me in app/views/sessions/new.html.slim
+= form_with scope: :session, url: login_path, local: true do |form|
+  p.error_message = @error_message
+  .login_email
+    = form.label :"メールアドレス"
+    = form.email_field :email
+  .login_password
+    = form.label :"パスワード"
+    = form.password_field :password
+  .btn
+    = form.submit "ログイン"
