@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id # => create session
       flash[:notice] = "ログインしました"
-      redirect_to blogs_path(@user_id)
+      redirect_to pictures_path(@user_id)
     else
       @error_message = "メールアドレスまたはパスワードが間違っています"
       render :new

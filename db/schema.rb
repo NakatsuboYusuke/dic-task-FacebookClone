@@ -1,9 +1,10 @@
-ActiveRecord::Schema.define(version: 2019_09_17_092939) do
+ActiveRecord::Schema.define(version: 2019_09_19_061816) do
 
   enable_extension "plpgsql"
 
-  create_table "blogs", force: :cascade do |t|
-    t.string "content"
+  create_table "pictures", force: :cascade do |t|
+    t.text "content"
+    t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -17,7 +18,6 @@ ActiveRecord::Schema.define(version: 2019_09_17_092939) do
     t.integer "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

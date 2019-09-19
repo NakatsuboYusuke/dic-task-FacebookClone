@@ -1,11 +1,11 @@
 .tit
   h2 投稿を作成
 .content
-  = form_with model: @blog, url: confirm_blogs_path, local: true do |form|
-    - if @blog.errors.any?
+  = form_with model: @picture, url: confirm_pictures_path, local: true do |form|
+    - if @picture.errors.any?
       .error_content
         ul
-          - @blog.errors.full_messages.each do |message|
+          - @picture.errors.full_messages.each do |message|
             li = message
     .post
       = form.text_area :content, placeholder: "今なにしてる？"

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'homes#index'
 
-  resources :blogs do
+  resources :pictures do
     collection do
       post :confirm
     end

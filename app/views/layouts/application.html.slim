@@ -11,11 +11,11 @@ html
     #container
       header.header
         .logo
-          h1 LookbookApp
+          h1 = link_to "LookbookApp", root_path
         nav.nav
           - if logged_in?
             = link_to current_user_name, user_path(current_user.id)
-            = link_to "投稿を作成", new_blog_path
+            = link_to "投稿を作成", new_picture_path
             = link_to "ログアウト", logout_path(current_user.id), method: :delete
           - else
             = form_with scope: :session, url: login_path, local: true do |form|

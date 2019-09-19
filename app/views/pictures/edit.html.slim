@@ -1,11 +1,11 @@
 .tit
   h2 投稿を編集
 .content
-  = form_with model: @blog, url: blogs_path, local: true do |form|
-    - if @blog.errors.any?
+  = form_with model: @picture, url: pictures_path, local: true do |form|
+    - if @picture.errors.any?
       .error_content
         ul
-          - @blog.errors.full_messages.each do |message|
+          - @picture.errors.full_messages.each do |message|
             li = message
     .post
       = form.text_area :content

@@ -1,0 +1,13 @@
+.tit
+  h2
+    span 投稿を送信する
+.content
+  p 以下の内容で送信します
+  = form_with model: @picture, local: true do |form|
+    = form.hidden_field :content
+    .submit_content
+      .text_area
+        p.detail = @picture.content
+      .btn
+        = form.submit "送信", class: "submit"
+        = form.submit "戻る", name: "back", class: "submit"

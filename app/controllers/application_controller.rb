@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # ヘルパーメソッド
-  helper_method :current_user, :logged_in?, :authenticate_user
+  helper_method :current_user, :logged_in?, :authenticate_user, :current_user_name
   before_action :login_required
 
   # セキュリティトークン
@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
     # current_user is false
     def login_required
       redirect_to login_path unless current_user
+    end
+
+    def current_user_name
+      "#{@current_user.first_name} #{@current_user.last_name}"
     end
 
 end
