@@ -28,5 +28,8 @@
       = form.radio_button :gender, :"男性"
       = form.label :gender, :"カスタム"
       = form.radio_button :gender, :"カスタム"
+    .image
+      = form.label :"写真"
+      = form.file_field :image
     .btn
       = form.submit "アカウント登録", class: "submit_btn"

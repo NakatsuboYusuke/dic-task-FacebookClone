@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
 
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show]
 
   # skip_before_action
   skip_before_action :login_forbided
@@ -63,6 +64,10 @@ class PicturesController < ApplicationController
 
     def picture_params
       params.require(:picture).permit(:content, :image, :image_cache)
+    end
+
+    def set_user
+      @user = User.find_by(id: @picture.user_id)
     end
 
 end

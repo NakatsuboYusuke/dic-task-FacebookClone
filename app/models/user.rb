@@ -5,6 +5,8 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :gender, presence: true
 
+  mount_uploader :image, ImageUploader
+
   before_validation { email.downcase! }
 
   enum gender: { "男性": 1, "女性": 2, "カスタム": 3 }
@@ -13,5 +15,5 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
 
   # アソシエーション
-  has_many :pictures
+  has_many :pictures, dependent: :delete_all
 end

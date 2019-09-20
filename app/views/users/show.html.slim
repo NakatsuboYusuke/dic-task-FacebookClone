@@ -2,6 +2,7 @@
   h2
 .content
   .profile
+    p.image = image_tag @user.image.url
     dl
       dt 名前
       dd #{@user.first_name} #{@user.last_name}
