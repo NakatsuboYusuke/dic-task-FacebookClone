@@ -2,9 +2,12 @@
   h2
     span 投稿詳細
 .content
+  p.name = current_user_name
   p.date #{time_ago_in_words(@picture.created_at)}前
   p.detail = @picture.content
-  .func
-    ul
-      li = link_to "投稿を編集", edit_picture_path(@picture.id), data: {confirm: "投稿を編集しますか？"}
-      li = link_to "投稿を削除", picture_path(@picture.id), data: {confirm: "投稿を削除しますか？"}, method: :delete
+  p.image = image_tag @picture.image.url
+  - if @picture.user_id == current_user.id
+    .func
+      ul
+        li = link_to "投稿を編集", edit_picture_path(@picture.id), data: {confirm: "投稿を編集しますか？"}
+        li = link_to "投稿を削除", picture_path(@picture.id), data: {confirm: "投稿を削除しますか？"}, method: :delete

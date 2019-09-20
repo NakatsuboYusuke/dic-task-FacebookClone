@@ -9,5 +9,10 @@
             li = message
     .post
       = form.text_area :content, placeholder: "今なにしてる？"
+    .post_image
+      = form.label :"写真"
+      = image_tag @picture.image.url if @picture.image && @picture.image.url
+      = form.file_field :image
+      = form.hidden_field :image_cache
     .btn
-      = form.submit "確認する"
+      = form.submit "確認する", class: "submit_btn"

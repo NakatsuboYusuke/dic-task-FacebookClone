@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
-  # ヘルパーメソッド
-  helper_method :current_user, :logged_in?, :authenticate_user, :current_user_name
+  # helper method
+  helper_method :current_user, :logged_in?, :current_user?, :authenticate_user, :current_user_name
   before_action :login_required
+  before_action :login_forbided
 
-  # セキュリティトークン
+  # security token
   protect_from_forgery with: :exception
 
   private
@@ -14,12 +15,17 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in?
-      current_user.present?
+      @current_user.present?
     end
 
     # current_user is false
     def login_required
       redirect_to login_path unless current_user
+    end
+
+    # current_user is true
+    def login_forbided
+      redirect_to pictures_path if current_user
     end
 
     def current_user_name

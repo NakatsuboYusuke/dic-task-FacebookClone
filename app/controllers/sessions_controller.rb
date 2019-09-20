@@ -2,10 +2,12 @@ class SessionsController < ApplicationController
 
   # skip_before_action
   skip_before_action :login_required
+  skip_before_action :login_forbided
 
   def new
   end
 
+  # login
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
@@ -18,6 +20,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # logout
   def destroy
     session.delete(:user_id)
     flash[:notice] = "ログアウトしました"

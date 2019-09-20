@@ -14,5 +14,7 @@ module Lookbookapp
     config.active_record.default_timezone = :local
     # convert english to japaneses => 修正
     config.i18n.default_locale = :ja
+
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
   end
 end

@@ -1,7 +1,7 @@
 .tit
   h2 投稿を編集
 .content
-  = form_with model: @picture, url: pictures_path, local: true do |form|
+  = form_with model: @picture, local: true do |form|
     - if @picture.errors.any?
       .error_content
         ul
@@ -9,5 +9,8 @@
             li = message
     .post
       = form.text_area :content
+    .post_image
+      = form.label :"写真"
+      = form.file_field :image
     .btn
       = form.submit "保存", class: "submit_btn"

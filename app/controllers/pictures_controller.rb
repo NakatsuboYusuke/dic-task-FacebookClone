@@ -2,6 +2,9 @@ class PicturesController < ApplicationController
 
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
+  # skip_before_action
+  skip_before_action :login_forbided
+
   def index
     @pictures = Picture.all
   end
@@ -18,6 +21,7 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
     if params[:back]
       render :new
     else
@@ -47,6 +51,7 @@ class PicturesController < ApplicationController
 
   def confirm
     @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
     render :new if @picture.invalid?
   end
 
@@ -57,7 +62,7 @@ class PicturesController < ApplicationController
     end
 
     def picture_params
-      params.require(:picture).permit(:content, :image)
+      params.require(:picture).permit(:content, :image, :image_cache)
     end
 
 end

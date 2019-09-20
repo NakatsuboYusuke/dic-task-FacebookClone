@@ -4,8 +4,7 @@
       - @user.errors.full_messages.each do |message|
         li = message
 .tit
-  h2 新規アカウントを作成
-  p 簡単に登録できます。
+  h2 プロフィールを編集
 .content
   = form_with model: @user, local: true do |form|
     .name
