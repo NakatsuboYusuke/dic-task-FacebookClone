@@ -9,4 +9,5 @@
         p.date #{time_ago_in_words(picture.created_at)}前
         p.name = current_user_name
         p.detail = picture.content
-        p.image = image_tag picture.image.url
+        - if picture.image.url.present?
+          p.image = image_tag picture.image.url

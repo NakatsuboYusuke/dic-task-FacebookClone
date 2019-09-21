@@ -18,6 +18,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'slim-rails'
 gem 'html2slim'
 gem 'autoprefixer-rails'
+gem 'font-awesome-rails'
 
 # Debug
 gem 'pry-rails'

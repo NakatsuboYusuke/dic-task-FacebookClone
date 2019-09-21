@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   # to sessions
   post '/users', to: 'sessions#create'
 
+  resources :favorites, only: [:create, :destroy]
+
   # 404, 500
-  get '*path', controller: 'application', action: 'render_404'
+  #get '*path', controller: 'application', action: 'render_404'
+  # => 開発中は消しておく。
 
 end

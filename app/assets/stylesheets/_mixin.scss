@@ -1,4 +1,7 @@
-/* mixin //////////*/
+/*////////////////////
+  mixin
+////////////////////*/
+
 $light-red: #d7000f;
 $dark-red: #990000;
 $base-yellow: #fdd001;
@@ -54,74 +57,4 @@ $sp: 559px;
   @media (max-width: ($sp)) {
     @content;
   }
-}
-
-/* reset //////////*/
-* {
-  padding: 0;
-  margin: 0;
-  line-height: 1.5;
-  box-sizing: border-box;
-}
-
-html {
-  height: 100%;
-  font-family: "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
-  font-size: 62.5%;
-}
-
-body {
-  height: 100%;
-}
-
-ul {
-  list-style-type: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-img {
-  width: 100%;
-  height: auto;
-  vertical-align: top;
-}
-
-input, button, textarea, select {
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-h1 {
-  padding: 0;
-  margin: 0;
-  font-size: 1.4rem;
-}
-
-h2 {
-  padding: 0;
-  margin: 0;
-  font-size: 2rem;
-}
-
-p {
-  padding: 0;
-  margin: 0;
-  font-size: 1.6rem;
-}
-
-a {
-  font-size: 1.6rem;
-}
-
-small {
-  font-size: 1.4rem;
 }

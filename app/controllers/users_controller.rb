@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :set_users, only: [:show, :edit, :update]
 
   # skip_before_action
-  skip_before_action :login_required, only: [:show, :edit, :update]
+  skip_before_action :login_required
   skip_before_action :login_forbided, only: [:show, :edit, :update]
 
   def new

@@ -1,3 +1,4 @@
+@import "_reset.scss";
 @import "_mixin.scss";
 
 /* layout //////////*/
@@ -330,5 +331,17 @@ footer {
         }
       }
     }
+  }
+}
+
+.like_btn {
+  .fa {
+    color: $dark-red;
+  }
+}
+
+.dislike_btn {
+  .fa {
+    color: $light-gray;
   }
 }

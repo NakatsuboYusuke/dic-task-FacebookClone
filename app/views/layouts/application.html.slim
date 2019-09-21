@@ -19,7 +19,10 @@ html
             ul
               - if logged_in?
                 li = link_to current_user_name, user_path(current_user.id)
-                li = image_tag current_user.image.url
+                - if current_user.image.url.present?
+                  li = image_tag current_user.image.url
+                - else
+                  li = image_tag "no_image.png"
                 li = link_to "タイムライン", pictures_path
                 li = link_to "投稿を作成", new_picture_path
                 li = link_to "ログアウト", logout_path(current_user.id), method: :delete

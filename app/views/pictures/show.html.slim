@@ -6,10 +6,20 @@
     p.image = image_tag @user.image.url
     p.name = current_user_name
     p.date #{time_ago_in_words(@picture.created_at)}前
-  p.detail = @picture.content
-  p.image = image_tag @picture.image.url
-  - if @picture.user_id == current_user.id
-    .func
-      ul
-        li = link_to "投稿を編集", edit_picture_path(@picture.id), data: {confirm: "投稿を編集しますか？"}
-        li = link_to "投稿を削除", picture_path(@picture.id), data: {confirm: "投稿を削除しますか？"}, method: :delete
+  .content_info
+    p.detail = @picture.content
+    - if @picture.image.url.present?
+      p.image = image_tag @picture.image.url
+  .user_info
+    .fav
+      - if @favorite.present?
+        = link_to favorite_path(id: @favorite.id), method: :delete, class: "like_btn" do
+          span.fa.fa-heart
+      - else
+        = link_to favorites_path(picture_id: @picture.id), method: :post, class: "dislike_btn" do
+          span.fa.fa-heart
+    - if @picture.user_id == current_user.id
+      .func
+        ul
+          li = link_to "投稿を編集", edit_picture_path(@picture.id), data: {confirm: "投稿を編集しますか？"}
+          li = link_to "投稿を削除", picture_path(@picture.id), data: {confirm: "投稿を削除しますか？"}, method: :delete
