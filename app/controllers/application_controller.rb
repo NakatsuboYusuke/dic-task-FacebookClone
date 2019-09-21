@@ -15,21 +15,21 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in?
-      @current_user.present?
+      current_user.present?
     end
 
     # current_user is false
     def login_required
-      redirect_to login_path unless @current_user
+      redirect_to login_path unless current_user
     end
 
     # current_user is true
     def login_forbided
-      redirect_to pictures_path if @current_user
+      redirect_to pictures_path if current_user
     end
 
     def current_user_name
-      "#{@current_user.first_name} #{@current_user.last_name}"
+      "#{current_user.first_name} #{current_user.last_name}"
     end
 
 end

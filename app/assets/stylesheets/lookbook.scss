@@ -1,0 +1,334 @@
+@import "_mixin.scss";
+
+/* layout //////////*/
+#container {
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  background: $base-yellow;
+}
+
+.sec {
+  .inner {
+    max-width: 960px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+}
+
+/* header //////////*/
+.header {
+  width: 100%;
+  height: auto;
+  position: relative;
+  .inner {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo {
+  height: 4rem;
+  h1 {
+    a {
+      display: block;
+      img {
+        width: auto;
+        height: 4rem;
+      }
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  ul {
+    display: flex;
+    align-items: center;
+    li {
+      margin-left: 2rem;
+      &:first-child {
+        margin-left: 0;
+      }
+      a {
+        font-weight: 600;
+        color: $light-red;
+        &:hover {
+          transition: all 0.5s ease;
+          color: $dark-red;
+        }
+      }
+    }
+  }
+}
+
+/* header => login_form //////////*/
+.nav {
+  form {
+    display: flex;
+    align-items: flex-end;
+    font-size: 1.4rem;
+    dl {
+      dt {
+        margin-bottom: .5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $dark-red;
+      }
+      dd {
+        input {
+          padding: .5rem;
+          background: #fff;
+          box-shadow: 0 0 .4rem rgba(0,0,0,0.1);
+        }
+      }
+    }
+    .btn {
+      padding: .25rem 1.25rem;
+      background: $dark-red;
+      input {
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/* footer //////////*/
+footer {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  .inner {
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
+  }
+}
+
+/* section //////////*/
+.sec {
+  .inner {
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
+    .tit {
+      h2 {
+        padding: 2rem;
+        font-size: 4.8rem;
+      }
+      p {
+        padding: 2rem;
+        font-size: 2.4rem;
+      }
+    }
+    .content {
+      padding: 6rem;
+      > p {
+        font-size: 2.0rem;
+      }
+      a {
+        display: inline-flex;
+        padding: 1.5rem 3rem;
+        background: $dark-red;
+        font-weight: 600;
+        color: #fff;
+        &:hover {
+          background: $light-red;
+          transition: all 0.5s ease;
+        }
+      }
+    }
+  }
+}
+
+/* form //////////*/
+.create_content {
+  padding: 2rem;
+  .text_area {
+    display: block;
+    width: 48rem;
+    height: 18rem;
+    padding: 2rem;
+    margin: 0 auto 4rem;
+    background: #fff;
+    box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
+    font-size: 1.6rem;
+    color:  $light-black;
+  }
+  .submit {
+    @include submit;
+  }
+}
+
+.submit_content {
+  padding: 2rem;
+  .text_area {
+    width: 48rem;
+    height: 18rem;
+    padding: 2rem;
+    margin: 0 auto 4rem;
+    background: #fff;
+    box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
+    text-align: left;
+    font-size: 1.6rem;
+    color:  $light-black;
+    word-wrap: break-word;
+  }
+  .btn {
+    .submit {
+      @include submit;
+      &:first-child {
+        margin-right: 4rem;
+      }
+    }
+  }
+}
+
+/* form error //////////*/
+#mutter_content {
+  display: block;
+  width: 48rem;
+  height: 18rem;
+  padding: 2rem;
+  margin: 0 auto 4rem;
+  background: #fff;
+  box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
+  font-size: 1.6rem;
+}
+
+.error_content {
+  font-size: 2rem;
+  color: $light-red;
+}
+
+/* flash //////////*/
+.flash {
+  padding: 1rem;
+  background: $light-black;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+/* sigle_page //////////*/
+.top {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .content {
+    h3 {
+      margin-bottom: 1rem;
+      font-size: 2.4rem;
+    }
+    p {
+      padding: 0;
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.list {
+  .inner {
+    .content {
+      .content_list {
+        width: 48rem;
+        height: auto;
+        margin: 0 auto;
+        box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
+        a {
+          display: block;
+          border-bottom: 1px solid #e8ecef;
+          background: #fff;
+          text-align: left;
+          font-size: 1.6rem;
+          font-weight: 400;
+          color: $light-black;
+          &:last-child {
+            border-bottom: none;
+          }
+          &:hover {
+            background: #f4f8fb;
+          }
+          p {
+            word-wrap: break-word;
+          }
+        }
+      }
+    }
+  }
+}
+
+.show {
+  .inner {
+    .content {
+      .post {
+        width: 48rem;
+        height: 18rem;
+        padding: 2rem;
+        margin: 0 auto;
+        background: #fff;
+        box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
+        text-align: left;
+        color: $light-black;
+        position: relative;
+        .detail {
+          margin-bottom: 2rem;
+          font-size: 1.6rem;
+          word-wrap: break-word;
+        }
+        .date {
+          position: absolute;
+          bottom: 2rem;
+          font-size: 1.6rem;
+          color: $light-gray;
+          a {
+            padding: 0;
+            background: none;
+            color: $light-red;
+            &:hover {
+              color: $dark-red;
+            }
+          }
+        }
+        .func {
+          position: absolute;
+          bottom: 2rem;
+          right: 2rem;
+          ul {
+            display: flex;
+            justify-content: flex-end;
+            color: $light-gray;
+            li {
+              a {
+                padding: 0;
+                background: none;
+                color: $light-gray;
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+              &:last-child {
+                margin-left: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

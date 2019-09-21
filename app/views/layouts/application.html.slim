@@ -10,27 +10,35 @@ html
   body
     #container
       header.header
-        .logo
-          h1 = link_to "LookbookApp", root_path
-        nav.nav
-          - if logged_in?
-            = link_to current_user_name, user_path(current_user.id)
-            = image_tag current_user.image.url
-            = link_to "タイムライン", pictures_path
-            = link_to "投稿を作成", new_picture_path
-            = link_to "ログアウト", logout_path(current_user.id), method: :delete
-          - else
-            = form_with scope: :session, url: login_path, local: true do |form|
-              .login_email
-                = form.label :"メールアドレス"
-                = form.email_field :email
-              .login_password
-                = form.label :"パスワード"
-                = form.password_field :password
-              .btn
-                = form.submit "ログイン"
-      .flash
-        = notice
+        .inner
+          .logo
+            h1 = link_to root_path do
+                = image_tag "logo.png"
+                span LookboolApp
+          nav.nav
+            ul
+              - if logged_in?
+                li = link_to current_user_name, user_path(current_user.id)
+                li = image_tag current_user.image.url
+                li = link_to "タイムライン", pictures_path
+                li = link_to "投稿を作成", new_picture_path
+                li = link_to "ログアウト", logout_path(current_user.id), method: :delete
+              - else
+                = form_with scope: :session, url: login_path, local: true do |form|
+                  li
+                    dl.login_email
+                      dt = form.label :"メールアドレス"
+                      dd = form.email_field :email
+                  li
+                    dl.login_password
+                      dt = form.label :"パスワード"
+                      dd = form.password_field :password
+                  li
+                    .btn
+                      = form.submit "ログイン", class: "submit_btn"
+      - if flash[:notice]
+        .flash
+          = flash[:notice]
       main.main
         section.sec
           .inner
