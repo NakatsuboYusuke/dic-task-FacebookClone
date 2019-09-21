@@ -5,15 +5,21 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :gender, presence: true
 
-  mount_uploader :image, ImageUploader
-
   before_validation { email.downcase! }
 
+  # get gender
   enum gender: { "男性": 1, "女性": 2, "カスタム": 3 }
 
+  # get password
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
-  # アソシエーション
-  has_many :pictures, dependent: :delete_all
+  # get image
+  mount_uploader :image, ImageUploader
+
+  # association
+  has_many :pictures, dependent: :destroy
+  # association
+  #has_many :favorites, dependent: :destory
+
 end

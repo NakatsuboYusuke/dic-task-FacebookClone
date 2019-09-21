@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  # to sessions
   post '/users', to: 'sessions#create'
+
+  # 404, 500
+  get '*path', controller: 'application', action: 'render_404'
 
 end
