@@ -39,27 +39,15 @@ input, button, textarea, select {
   border: none;
   border-radius: 0;
   outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  //-webkit-appearance: none;
+  //-moz-appearance: none;
+  //appearance: none;
 }
 
-h1 {
+h1, h2, h3, p {
   padding: 0;
   margin: 0;
-  font-size: 1.4rem;
-}
-
-h2 {
-  padding: 0;
-  margin: 0;
-  font-size: 2rem;
-}
-
-p {
-  padding: 0;
-  margin: 0;
-  font-size: 1.6rem;
+  word-wrap: break-word;
 }
 
 a {

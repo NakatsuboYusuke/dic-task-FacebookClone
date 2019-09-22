@@ -1,13 +1,13 @@
 class PicturesController < ApplicationController
 
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:show]
+  before_action :set_favorite, only: [:show]
 
   # skip_before_action
   skip_before_action :login_forbided
 
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.order(created_at: :desc)
   end
 
   def show
@@ -67,8 +67,13 @@ class PicturesController < ApplicationController
       params.require(:picture).permit(:content, :image, :image_cache)
     end
 
-    def set_user
-      @user = User.find_by(id: @picture.user_id)
+    def set_favorite
+      @favorite_count = Favorite.where(picture_id: @picture.id).count
+    end
+
+    # instance method for association
+    def user
+      return User.find_by(id: @picture.user_id)
     end
 
 end

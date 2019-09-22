@@ -3,9 +3,13 @@
     span 投稿詳細
 .content
   .post_info
-    p.image = image_tag @user.image.url
-    p.name = current_user_name
-    p.date #{time_ago_in_words(@picture.created_at)}前
+    - if @picture.user.image.url.present?
+      p.image = image_tag @picture.user.image.url
+    - else
+      p.image = image_tag "no_image.png"
+    p.name #{@picture.user.first_name} #{@picture.user.last_name}
+    p.date #{@picture.created_at.strftime("%Y年%m月%d日")}
+    /p.date #{time_ago_in_words(@picture.created_at)}前
   .content_info
     p.detail = @picture.content
     - if @picture.image.url.present?
@@ -14,10 +18,11 @@
     .fav
       - if @favorite.present?
         = link_to favorite_path(id: @favorite.id), method: :delete, class: "like_btn" do
-          span.fa.fa-heart
+          p.fa.fa-heart
       - else
         = link_to favorites_path(picture_id: @picture.id), method: :post, class: "dislike_btn" do
-          span.fa.fa-heart
+          p.fa.fa-heart
+      p = @favorite_count
     - if @picture.user_id == current_user.id
       .func
         ul

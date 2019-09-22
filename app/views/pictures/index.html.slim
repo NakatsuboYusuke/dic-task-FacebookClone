@@ -1,13 +1,22 @@
 .tit
   h2 タイムライン
-.content
-  .content_new
-    = link_to "newアクションへ", new_picture_path
-  .content_list
-    - @pictures.each do |picture|
-      = link_to picture_path(picture.id)
-        p.date #{time_ago_in_words(picture.created_at)}前
-        p.name = current_user_name
-        p.detail = picture.content
-        - if picture.image.url.present?
-          p.image = image_tag picture.image.url
+.content.list
+  - @pictures.each do |picture|
+    = link_to picture_path(picture.id)
+      .info
+        .info_image
+          - if picture.user.image.url.present?
+            p.image = image_tag picture.user.image.url
+          - else
+            p.image = image_tag "no_image.png"
+        .info_post
+          p.name #{picture.user.first_name} #{picture.user.last_name}
+          /p.date #{time_ago_in_words(picture.created_at)}前
+          p.date = picture.created_at.strftime("%Y年%m月%d日")
+      p.detail = picture.content
+      - if picture.image.url.present?
+        p.image = image_tag picture.image.url
+      .fav
+        p
+          span.fa.fa-heart
+          span = picture.favorites.where(picture_id: picture).count

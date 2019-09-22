@@ -1,10 +1,10 @@
 doctype html
 html
   head
-    title
-      | Lookbookapp
+    title Lookbookapp
     = csrf_meta_tags
     = csp_meta_tag
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
@@ -20,9 +20,11 @@ html
               - if logged_in?
                 li = link_to current_user_name, user_path(current_user.id)
                 - if current_user.image.url.present?
-                  li = image_tag current_user.image.url
+                  li = link_to user_path(current_user.id) do
+                    = image_tag current_user.image.url
                 - else
-                  li = image_tag "no_image.png"
+                  li = link_to user_path(current_user.id) do
+                    = image_tag "no_image.png"
                 li = link_to "タイムライン", pictures_path
                 li = link_to "投稿を作成", new_picture_path
                 li = link_to "ログアウト", logout_path(current_user.id), method: :delete
@@ -42,10 +44,9 @@ html
       - if flash[:notice]
         .flash
           = flash[:notice]
-      main.main
-        section.sec
-          .inner
-            = yield
+      section.sec
+        .inner
+          = yield
       footer.footer
         .inner
           p

@@ -1,30 +1,87 @@
 @import "_reset.scss";
 @import "_mixin.scss";
 
-/* layout //////////*/
+/*////////////////////////////////////////
+  menu
+  - common layout
+  - header
+  - footer
+  - form
+  - section
+   - top
+   - bottom
+  - parts
+////////////////////////////////////////*/
+
+/*////////////////////////////////////////
+  common layout
+////////////////////////////////////////*/
 #container {
   width: 100vw;
   height: auto;
   min-height: 100vh;
-  margin: 0 auto;
-  position: relative;
   background: $base-yellow;
+  display: flex;
+  flex-flow: column;
 }
 
 .sec {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .inner {
     max-width: 960px;
     width: 100%;
     height: auto;
-    margin: 0 auto;
   }
 }
 
-/* header //////////*/
+.sec {
+  .inner {
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
+    .tit {
+      padding: 2rem;
+      h2 {
+        margin-bottom: 1rem;
+        font-size: 3.2rem;
+      }
+      p {
+        font-size: 2.0rem;
+      }
+    }
+    .content {
+      padding: 2rem;
+    }
+  }
+}
+
+/* form ////////////////////*/
+.sec {
+  .inner {
+    .content.login, .content.new {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+/* flash //////////*/
+.flash {
+  padding: 1rem;
+  background: $light-black;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+/*////////////////////////////////////////
+  header
+////////////////////////////////////////*/
 .header {
-  width: 100%;
-  height: auto;
-  position: relative;
   .inner {
     padding: 2rem;
     display: flex;
@@ -35,9 +92,10 @@
 
 .logo {
   height: 4rem;
+  margin-right: 4rem;
   h1 {
     a {
-      display: block;
+      display: inline-flex;
       img {
         width: auto;
         height: 4rem;
@@ -61,18 +119,26 @@
         margin-left: 0;
       }
       a {
+        display: inline-flex;
+        padding: .4rem;
+        font-size: 1.4rem;
         font-weight: 600;
         color: $light-red;
         &:hover {
           transition: all 0.5s ease;
           color: $dark-red;
         }
+        img {
+          width: auto;
+          height: 5rem;
+          border-radius: 25px;
+        }
       }
     }
   }
 }
 
-/* header => login_form //////////*/
+/* form ////////////////////*/
 .nav {
   form {
     display: flex;
@@ -105,12 +171,10 @@
   }
 }
 
-/* footer //////////*/
+/*////////////////////////////////////////
+  footer
+////////////////////////////////////////*/
 footer {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  bottom: 0;
   .inner {
     padding: 2rem;
     text-align: center;
@@ -118,61 +182,200 @@ footer {
   }
 }
 
-/* section //////////*/
+/*////////////////////////////////////////
+  form
+////////////////////////////////////////*/
+/* login ////////////////////*/
+.content {
+  padding: 2rem;
+  color: $light-black;
+  form {
+    max-width: 44rem;
+    width: 100%;
+    height: auto;
+    padding: 0 2rem;
+    font-size: 1.6rem;
+    color:  $light-black;
+    .post_detail {
+      margin-bottom: 2rem;
+      text-align: left;
+      input, select {
+        padding: .5rem 1rem;
+        background: #fff;
+        box-shadow: 0 0 .4rem rgba(0,0,0,0.1);
+        font-size: 1.4rem;
+        vertical-align: 0.2rem;
+      }
+      p {
+        margin-bottom: 1rem;
+        text-align: left;
+        font-weight: 600;
+      }
+    }
+    .name {
+      display: flex;
+      justify-content: space-between;
+      input {
+        max-width: 19rem;
+        width: 100%;
+        height: 4rem;
+        &:last-of-type {
+          margin-left: 2rem;
+        }
+      }
+    }
+    .email, .password, .password_confirmation, .image {
+      input {
+        max-width: 40rem;
+        width: 100%;
+        height: 4rem;
+      }
+    }
+    .birthday {
+      select {
+        height: 3rem;
+      }
+    }
+    .gender {
+      input {
+        margin-right: 1.5rem;
+        margin-left: .5rem;
+      }
+    }
+    .image {
+      margin-bottom: 3rem;
+    }
+    .submit_btn {
+      @include submit;
+    }
+  }
+}
+
+/* error ////////////////////*/
+.error_content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 44rem;
+  width: 100%;
+  height: auto;
+  //padding: 2rem;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: $light-red;
+  ul {
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.content.login {
+  .error_content {
+    margin-bottom: 2rem;
+  }
+  .post_detail {
+    dl {
+      dt {
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+/*////////////////////////////////////////
+  section
+////////////////////////////////////////*/
+/*////////////////////////////////////////
+  top
+////////////////////////////////////////*/
 .sec {
   .inner {
-    padding: 2rem;
-    text-align: center;
-    color: #fff;
-    .tit {
+    .tit.top {
       h2 {
-        padding: 2rem;
+        margin-bottom: 1rem;
         font-size: 4.8rem;
       }
       p {
-        padding: 2rem;
         font-size: 2.4rem;
       }
     }
-    .content {
+    .content.top {
       padding: 6rem;
-      > p {
+      display: block;
+      color: #fff;
+      h3 {
+      margin-bottom: 1rem;
+      font-size: 2.4rem;
+      }
+      p {
+        margin-bottom: 3rem;
         font-size: 2.0rem;
       }
       a {
-        display: inline-flex;
-        padding: 1.5rem 3rem;
-        background: $dark-red;
-        font-weight: 600;
-        color: #fff;
+        @include link;
+      }
+    }
+  }
+}
+
+/*////////////////////////////////////////
+  bottom
+////////////////////////////////////////*/
+/* picture/index ////////////////////*/
+.sec {
+  .inner {
+    .content.list {
+      width: 48rem;
+      height: auto;
+      margin: 0 auto;
+      padding: 0;
+      box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
+      a {
+        display: block;
+        padding: 2rem;
+        border-bottom: 1px solid #e8ecef;
+        background: #fff;
+        text-align: left;
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: $light-black;
+        &:last-child {
+          border-bottom: none;
+        }
         &:hover {
-          background: $light-red;
-          transition: all 0.5s ease;
+          background: #f4f8fb;
+        }
+        .info {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          margin-bottom: 2rem;
+          .info_image {
+            margin-right: 1rem;
+            p {
+              img {
+                width: auto;
+                height: 5rem;
+                border-radius: 25px;
+              }
+            }
+          }
+        }
+        .detail {
+          margin-bottom: 2rem;
         }
       }
     }
   }
 }
 
-/* form //////////*/
-.create_content {
-  padding: 2rem;
-  .text_area {
-    display: block;
-    width: 48rem;
-    height: 18rem;
-    padding: 2rem;
-    margin: 0 auto 4rem;
-    background: #fff;
-    box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
-    font-size: 1.6rem;
-    color:  $light-black;
-  }
-  .submit {
-    @include submit;
-  }
-}
 
+
+/*////////////////////////////////////////////////////////////////////////////////////////*/
 .submit_content {
   padding: 2rem;
   .text_area {
@@ -209,70 +412,7 @@ footer {
   font-size: 1.6rem;
 }
 
-.error_content {
-  font-size: 2rem;
-  color: $light-red;
-}
 
-/* flash //////////*/
-.flash {
-  padding: 1rem;
-  background: $light-black;
-  text-align: center;
-  font-size: 1.4rem;
-  color: #fff;
-}
-
-/* sigle_page //////////*/
-.top {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  .content {
-    h3 {
-      margin-bottom: 1rem;
-      font-size: 2.4rem;
-    }
-    p {
-      padding: 0;
-      margin-bottom: 3rem;
-    }
-  }
-}
-
-.list {
-  .inner {
-    .content {
-      .content_list {
-        width: 48rem;
-        height: auto;
-        margin: 0 auto;
-        box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
-        a {
-          display: block;
-          border-bottom: 1px solid #e8ecef;
-          background: #fff;
-          text-align: left;
-          font-size: 1.6rem;
-          font-weight: 400;
-          color: $light-black;
-          &:last-child {
-            border-bottom: none;
-          }
-          &:hover {
-            background: #f4f8fb;
-          }
-          p {
-            word-wrap: break-word;
-          }
-        }
-      }
-    }
-  }
-}
 
 .show {
   .inner {
@@ -334,6 +474,10 @@ footer {
   }
 }
 
+/*////////////////////////////////////////
+  parts
+////////////////////////////////////////*/
+/* btn //////////*/
 .like_btn {
   .fa {
     color: $dark-red;
@@ -345,3 +489,10 @@ footer {
     color: $light-gray;
   }
 }
+
+
+
+/*////////////////////////////////////////
+  sp
+////////////////////////////////////////*/
+// tab、spではすべてdisplay-flexをoffに。
