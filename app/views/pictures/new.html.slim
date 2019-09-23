@@ -1,16 +1,16 @@
 .tit
   h2 投稿を作成
-.content
+.content.create
   = form_with model: @picture, url: confirm_pictures_path, local: true do |form|
     - if @picture.errors.any?
       .error_content
         ul
           - @picture.errors.full_messages.each do |message|
             li = message
-    .post
+    .post_detail.textarea
       = form.text_area :content, placeholder: "今なにしてる？"
-    .post_image
-      = form.label :"写真"
+    .post_detail.image
+      p = form.label :"写真"
       = image_tag @picture.image.url if @picture.image && @picture.image.url
       = form.file_field :image
       = form.hidden_field :image_cache

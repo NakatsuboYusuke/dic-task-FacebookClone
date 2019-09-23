@@ -1,16 +1,16 @@
 .tit
   h2 投稿を編集
-.content
+.content.create
   = form_with model: @picture, local: true do |form|
     - if @picture.errors.any?
       .error_content
         ul
           - @picture.errors.full_messages.each do |message|
             li = message
-    .post
+    .post_detail.textarea
       = form.text_area :content
-    .post_image
-      = form.label :"写真"
+    .post_detail.image
+      p = form.label :"写真"
       = form.file_field :image
     .btn
       = form.submit "保存", class: "submit_btn"

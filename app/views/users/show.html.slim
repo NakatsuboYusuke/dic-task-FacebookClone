@@ -5,15 +5,19 @@
     p.image = image_tag @user.image.url
   - else
     p.image = image_tag "no_image.png"
-  dl
-    dt 名前
-    dd #{@user.first_name} #{@user.last_name}
-    dt メールアドレス
-    dd = @user.email
-    dt 性別
-    dd = @user.gender
-    dt 生年月日
-    dd #{convert_birthday_time(@user.birthday)}
+  .detail
+    dl
+      dt 名前
+      dd #{@user.first_name} #{@user.last_name}
+    dl
+      dt メールアドレス
+      dd = @user.email
+    dl
+      dt 性別
+      dd = @user.gender
+    dl
+      dt 生年月日
+      dd #{convert_birthday_time(@user.birthday)}
   - if @user.id == current_user.id
     .func
       ul

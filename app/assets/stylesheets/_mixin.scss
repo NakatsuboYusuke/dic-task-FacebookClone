@@ -9,8 +9,10 @@ $light-black: #010101;
 $light-gray: #ccd1d4;
 
 @mixin submit {
-  padding: 1.5rem 3rem;
+  display: inline-flex;
+  padding: 1rem 3rem;
   background: $dark-red;
+  box-shadow: 0 0 .4rem rgba(0,0,0,0.1);
   font-size: 1.4rem;
   font-weight: 600;
   color: #fff;
@@ -22,21 +24,18 @@ $light-gray: #ccd1d4;
 
 @mixin link {
   display: inline-flex;
-  padding: 1.5rem 3rem;
-  background: $dark-red;
   font-size: 1.4rem;
-  font-weight: 600;
-  color: #fff;
+  color: $dark-red;
   &:hover {
-    background: $light-red;
     transition: all 0.5s ease;
+    color: $light-red;
   }
 }
 
 /* media query //////////*/
 //$pc: 960px;
-$tab: 959px;
-$sp: 559px;
+$tab: 768px;
+//$sp: 559px;
 
 /*
 @mixin pc {
@@ -52,8 +51,10 @@ $sp: 559px;
   }
 }
 
+/*
 @mixin sp {
   @media (max-width: ($sp)) {
     @content;
   }
 }
+*/

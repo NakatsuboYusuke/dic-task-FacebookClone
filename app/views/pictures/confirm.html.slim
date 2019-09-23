@@ -1,18 +1,17 @@
 .tit
   h2
     span 投稿を送信する
-.content
   p 以下の内容で送信します
+.content.confirm
   = form_with model: @picture, local: true do |form|
     = form.hidden_field :content
     = form.hidden_field :image_cache
     .submit_content
-      .post
-        p.detail = @picture.content
-      .post_image
+      p.detail = @picture.content
+      .post_detail.image
         = image_tag @picture.image.url if @picture.image && @picture.image.url
-      .btn
-        = form.submit "送信", class: "submit"
-  = form_with model: @picture, url: new_picture_path, local:true, method:"get" do |form|
-    = form.hidden_field :image_cache
-    = form.submit "戻る", name: "back", class: "submit"
+    .btn
+      = form.submit "送信", class: "submit_btn"
+      = form_with model: @picture, url: new_picture_path, local:true, method:"get" do |form|
+        = form.hidden_field :image_cache
+        = form.submit "戻る", name: "back", class: "submit_btn"

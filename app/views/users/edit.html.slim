@@ -1,25 +1,25 @@
-- if @user.errors.any?
-  #error_explanation
-    ul
-      - @user.errors.full_messages.each do |message|
-        li = message
 .tit
   h2 プロフィールを編集
-.content
+.content.create
   = form_with model: @user, local: true do |form|
-    .name
+    - if @user.errors.any?
+    .error_content
+      ul
+        - @user.errors.full_messages.each do |message|
+          li = message
+    .post_detail.name
       = form.text_field :first_name, placeholder: "姓"
       = form.text_field :last_name, placeholder: "名"
-    .email
+    .post_detail.email
       = form.email_field :email, placeholder: "メールアドレス"
-    .password
+    .post_detail.password
       = form.password_field :password, placeholder: "パスワード"
-    .password_confirmation
+    .post_detail.password_confirmation
       = form.password_field :password_confirmation, placeholder: "確認用パスワード"
-    .birthday
+    .post_detail.birthday
       p 誕生日
       = form.date_select(:birthday, start_year: 1930, end_year: (Time.now.year), default: Date.new(1989, 1, 1))
-    .gender
+    .post_detail.gender
       p 性別
       = form.label :gender, :"女性"
       = form.radio_button :gender, :"女性"
@@ -27,7 +27,7 @@
       = form.radio_button :gender, :"男性"
       = form.label :gender, :"カスタム"
       = form.radio_button :gender, :"カスタム"
-    .image
+    .post_detail.image
       = form.label :"写真"
       = form.file_field :image
     .btn

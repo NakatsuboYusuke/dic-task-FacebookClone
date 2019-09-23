@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require lookbookapp
 //= require_tree .

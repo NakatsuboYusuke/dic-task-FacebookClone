@@ -29,9 +29,9 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: unset;
   .inner {
-    max-width: 960px;
+    max-width: 960rem;
     width: 100%;
     height: auto;
   }
@@ -54,6 +54,17 @@
     }
     .content {
       padding: 2rem;
+      p {
+        margin-bottom: .5rem;
+        font-size: 1.4rem;
+        &.detail {
+          margin-bottom: 2rem;
+          text-align: left;
+        }
+        &.image {
+          margin-bottom: 2rem;
+        }
+      }
     }
   }
 }
@@ -61,7 +72,7 @@
 /* form ////////////////////*/
 .sec {
   .inner {
-    .content.login, .content.new {
+    .content.login,.content.new {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -115,7 +126,7 @@
     align-items: center;
     li {
       margin-left: 2rem;
-      &:first-child {
+      &:first-of-type {
         margin-left: 0;
       }
       a {
@@ -194,6 +205,7 @@ footer {
     width: 100%;
     height: auto;
     padding: 0 2rem;
+    margin: 0 auto;
     font-size: 1.6rem;
     color:  $light-black;
     .post_detail {
@@ -251,6 +263,45 @@ footer {
   }
 }
 
+/* new ////////////////////*/
+.content.create {
+  textarea {
+    max-width: 48rem;
+    width: 100%;
+    height: 14.4rem;
+    padding: 1.5rem;
+    background: #fff;
+    box-shadow: 0 0 .4rem rgba(0,0,0,0.1);
+    font-size: 1.4rem;
+  }
+}
+
+/* comfirm ////////////////////*/
+.content.confirm {
+  .submit_content {
+    max-width: 48rem;
+    width: 100%;
+    height: auto;
+    padding: 1.5rem;
+    background: #fff;
+    box-shadow: 0 0 .4rem rgba(0,0,0,0.1);
+    font-size: 1.4rem;
+    word-wrap: break-word;
+    p.detail {
+      margin-bottom: 3rem;
+    }
+  }
+  .btn {
+    margin-top: 4rem;
+    .submit_btn {
+      @include submit;
+      &:first-child {
+        margin-right: 4rem;
+      }
+    }
+  }
+}
+
 /* error ////////////////////*/
 .error_content {
   display: flex;
@@ -277,6 +328,7 @@ footer {
     margin-bottom: 2rem;
   }
   .post_detail {
+    text-align: left;
     dl {
       dt {
         margin-bottom: 1rem;
@@ -295,6 +347,7 @@ footer {
 .sec {
   .inner {
     .tit.top {
+      padding-top: 8rem;
       h2 {
         margin-bottom: 1rem;
         font-size: 4.8rem;
@@ -316,7 +369,7 @@ footer {
         font-size: 2.0rem;
       }
       a {
-        @include link;
+        @include submit;
       }
     }
   }
@@ -325,11 +378,35 @@ footer {
 /*////////////////////////////////////////
   bottom
 ////////////////////////////////////////*/
+/* picture/common ////////////////////*/
+.info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2rem;
+  text-align: left;
+  .info_image {
+    margin-right: 1rem;
+    p {
+      img {
+        width: auto;
+        height: 5rem;
+        border-radius: 25px;
+      }
+    }
+  }
+}
+.detail {
+  margin-bottom: 2rem;
+}
+
 /* picture/index ////////////////////*/
 .sec {
+  align-items: unset;
   .inner {
     .content.list {
-      width: 48rem;
+      max-width: 48rem;
+      width: 100%;
       height: auto;
       margin: 0 auto;
       padding: 0;
@@ -349,125 +426,100 @@ footer {
         &:hover {
           background: #f4f8fb;
         }
-        .info {
+      }
+    }
+  }
+}
+
+/* picture/show ////////////////////*/
+.sec {
+  align-items: unset;
+  .inner {
+    .tit {
+      h2 {
+        span {
+          display: none;
+        }
+      }
+    }
+    .content.show {
+      max-width: 48rem;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #fff;
+      box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
+      a {
+        font-weight: 600;
+        color: $dark-red;
+        &:hover {
+          transition: all 0.5s ease;
+          color: $light-red;
+        }
+      }
+      .fav {
+        text-align: left;
+      }
+      .func {
+        ul {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          li {
+            &:last-of-type {
+              margin-left: 2rem;
+            }
+             a {
+              font-size: 1.4rem;
+              font-weight: 500;
+             }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*////////////////////////////////////////
+  user
+////////////////////////////////////////*/
+/* user/show ////////////////////*/
+.sec {
+  .inner {
+    .content.profile {
+      max-width: 48rem;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #fff;
+      box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
+      .image {
+        img {
+          width: auto;
+          height: 10rem;
+          border-radius: 50px;
+        }
+      }
+      .detail {
+        font-size: 1.4rem;
+        dl {
           display: flex;
           justify-content: flex-start;
           align-items: center;
-          margin-bottom: 2rem;
-          .info_image {
-            margin-right: 1rem;
-            p {
-              img {
-                width: auto;
-                height: 5rem;
-                border-radius: 25px;
-              }
-            }
-          }
-        }
-        .detail {
-          margin-bottom: 2rem;
-        }
-      }
-    }
-  }
-}
-
-
-
-/*////////////////////////////////////////////////////////////////////////////////////////*/
-.submit_content {
-  padding: 2rem;
-  .text_area {
-    width: 48rem;
-    height: 18rem;
-    padding: 2rem;
-    margin: 0 auto 4rem;
-    background: #fff;
-    box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
-    text-align: left;
-    font-size: 1.6rem;
-    color:  $light-black;
-    word-wrap: break-word;
-  }
-  .btn {
-    .submit {
-      @include submit;
-      &:first-child {
-        margin-right: 4rem;
-      }
-    }
-  }
-}
-
-/* form error //////////*/
-#mutter_content {
-  display: block;
-  width: 48rem;
-  height: 18rem;
-  padding: 2rem;
-  margin: 0 auto 4rem;
-  background: #fff;
-  box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
-  font-size: 1.6rem;
-}
-
-
-
-.show {
-  .inner {
-    .content {
-      .post {
-        width: 48rem;
-        height: 18rem;
-        padding: 2rem;
-        margin: 0 auto;
-        background: #fff;
-        box-shadow: 0 0 .8rem rgba(0,0,0,0.2);
-        text-align: left;
-        color: $light-black;
-        position: relative;
-        .detail {
-          margin-bottom: 2rem;
-          font-size: 1.6rem;
-          word-wrap: break-word;
-        }
-        .date {
-          position: absolute;
-          bottom: 2rem;
-          font-size: 1.6rem;
-          color: $light-gray;
-          a {
-            padding: 0;
-            background: none;
-            color: $light-red;
-            &:hover {
-              color: $dark-red;
-            }
-          }
-        }
-        .func {
-          position: absolute;
-          bottom: 2rem;
-          right: 2rem;
-          ul {
+          margin-bottom: 1rem;
+          dt {
             display: flex;
-            justify-content: flex-end;
-            color: $light-gray;
-            li {
-              a {
-                padding: 0;
-                background: none;
-                color: $light-gray;
-                &:hover {
-                  text-decoration: underline;
-                }
-              }
-              &:last-child {
-                margin-left: 1rem;
-              }
-            }
+            width: 12rem;
+            height: auto;
           }
+        }
+      }
+      .func {
+        text-align: right;
+        a {
+          @include link;
         }
       }
     }
@@ -480,8 +532,13 @@ footer {
 /* btn //////////*/
 .like_btn {
   .fa {
-    color: $dark-red;
+    color: $light-red;
   }
+}
+.like_count {
+  padding-left: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .dislike_btn {
@@ -490,9 +547,122 @@ footer {
   }
 }
 
-
-
 /*////////////////////////////////////////
   sp
 ////////////////////////////////////////*/
-// tab、spではすべてdisplay-flexをoffに。
+/* form ////////////////////*/
+@include tab {
+  .nav {
+    form {
+      display: block;
+      input {
+        width: 16rem;
+      }
+      .btn {
+        width: 16rem;
+        padding: .75rem 1.5rem;
+        input {
+          width: 16rem;
+          margin-left: -1.5rem;
+        }
+      }
+    }
+  }
+}
+
+/*////////////////////////////////////////
+  hamburger
+////////////////////////////////////////*/
+#nav-btn {
+  display: none;
+  outline: none;
+}
+
+@include tab {
+  #nav-btn {
+    display: block;
+    position: fixed;
+    z-index: 99;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+  }
+  .hamburger {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 36px;
+    .bdr {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      border-radius: 4px;
+      background: $dark-red;
+      transition: all .5s ease;
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 16px;
+      }
+      &:nth-child(3) {
+        bottom: 0;
+      }
+    }
+    &.is-active {
+      .bdr {
+        background: $dark-red;
+        &:nth-child(1) {
+          transform: translateY(16px) rotate(-45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: translateY(-16px) rotate(45deg);
+        }
+      }
+    }
+  }
+  .nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 20rem;
+    height: 100%;
+    padding-top: 6rem;
+    text-align: left;
+    font-size: 1.4rem;
+    background: $base-yellow;
+    z-index: 99;
+    transform: translateX(200px);
+    transition: .5s all ease;
+    ul {
+      display: block;
+      padding-top: 2rem;
+      text-align: left;
+      li {
+        &.login {
+          margin-bottom: 2rem;
+        }
+        &:first-of-type {
+          margin-left: 2rem;
+        }
+        a {
+          padding: 2rem 0;
+        }
+      }
+    }
+  }
+  .nav-open {
+    .nav {
+      transform: translateX(0);
+    }
+    #contents {
+      transform: translateX(-200px);
+    }
+  }
+}

@@ -17,6 +17,6 @@
       - if picture.image.url.present?
         p.image = image_tag picture.image.url
       .fav
-        p
+        p.like_btn
           span.fa.fa-heart
-          span = picture.favorites.where(picture_id: picture).count
+          span.like_count = picture.favorites.where(picture_id: picture).count

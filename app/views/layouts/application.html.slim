@@ -15,32 +15,38 @@ html
             h1 = link_to root_path do
                 = image_tag "logo.png"
                 span LookboolApp
-          nav.nav
-            ul
-              - if logged_in?
-                li = link_to current_user_name, user_path(current_user.id)
-                - if current_user.image.url.present?
-                  li = link_to user_path(current_user.id) do
-                    = image_tag current_user.image.url
+          #wrapper
+            nav.nav.login
+              ul
+                - if logged_in?
+                  li = link_to current_user_name, user_path(current_user.id)
+                  - if current_user.image.url.present?
+                    li = link_to user_path(current_user.id) do
+                      = image_tag current_user.image.url
+                  - else
+                    li = link_to user_path(current_user.id) do
+                      = image_tag "no_image.png"
+                    li = link_to "タイムライン", pictures_path
+                  li = link_to "投稿を作成", new_picture_path
+                  li = link_to "ログアウト", logout_path(current_user.id), method: :delete
                 - else
-                  li = link_to user_path(current_user.id) do
-                    = image_tag "no_image.png"
-                li = link_to "タイムライン", pictures_path
-                li = link_to "投稿を作成", new_picture_path
-                li = link_to "ログアウト", logout_path(current_user.id), method: :delete
-              - else
-                = form_with scope: :session, url: login_path, local: true do |form|
-                  li
-                    dl.login_email
-                      dt = form.label :"メールアドレス"
-                      dd = form.email_field :email
-                  li
-                    dl.login_password
-                      dt = form.label :"パスワード"
-                      dd = form.password_field :password
-                  li
-                    .btn
-                      = form.submit "ログイン", class: "submit_btn"
+                  = form_with scope: :session, url: login_path, local: true do |form|
+                    li.login
+                      dl.login_email
+                        dt = form.label :"メールアドレス"
+                        dd = form.email_field :email
+                    li.login
+                      dl.login_password
+                        dt = form.label :"パスワード"
+                        dd = form.password_field :password
+                    li
+                      .btn
+                        = form.submit "ログイン", class: "submit_btn"
+            button#nav-btn.hamburger
+              span.bdr
+              span.bdr
+              span.bdr
+            #contents
       - if flash[:notice]
         .flash
           = flash[:notice]
