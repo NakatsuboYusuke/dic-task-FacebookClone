@@ -19,5 +19,6 @@ module Lookbookapp
       %Q(#{html_tag}).html_safe
     end
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+    config.assets.initialize_on_precompile = false
   end
 end
