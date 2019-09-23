@@ -59,21 +59,21 @@ class PicturesController < ApplicationController
 
   private
 
-    def set_picture
-      @picture = Picture.find(params[:id])
-    end
+  def set_picture
+    @picture = Picture.find(params[:id])
+  end
 
-    def picture_params
-      params.require(:picture).permit(:content, :image, :image_cache)
-    end
+  def picture_params
+    params.require(:picture).permit(:content, :image, :image_cache)
+  end
 
-    def set_favorite
-      @favorite_count = Favorite.where(picture_id: @picture.id).count
-    end
+  def set_favorite
+    @favorite_count = Favorite.where(picture_id: @picture.id).count
+  end
 
-    # instance method for association
-    def user
-      return User.find_by(id: @picture.user_id)
-    end
+  # instance method for association
+  def user
+    return User.find_by(id: @picture.user_id)
+  end
 
 end
