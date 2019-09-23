@@ -26,7 +26,7 @@ html
                   - else
                     li = link_to user_path(current_user.id) do
                       = image_tag "no_image.png"
-                    li = link_to "タイムライン", pictures_path
+                  li = link_to "タイムライン", pictures_path
                   li = link_to "投稿を作成", new_picture_path
                   li = link_to "ログアウト", logout_path(current_user.id), method: :delete
                 - else

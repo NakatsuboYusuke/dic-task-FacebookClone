@@ -204,7 +204,7 @@ footer {
     max-width: 44rem;
     width: 100%;
     height: auto;
-    padding: 0 2rem;
+    //padding: 0 2rem;
     margin: 0 auto;
     font-size: 1.6rem;
     color:  $light-black;
@@ -264,15 +264,19 @@ footer {
 }
 
 /* new ////////////////////*/
-.content.create {
-  textarea {
-    max-width: 48rem;
-    width: 100%;
-    height: 14.4rem;
-    padding: 1.5rem;
-    background: #fff;
-    box-shadow: 0 0 .4rem rgba(0,0,0,0.1);
-    font-size: 1.4rem;
+.sec {
+  .inner {
+    .content.create {
+      textarea {
+        max-width: 48rem;
+        width: 100%;
+        height: 14.4rem;
+        padding: 1.5rem;
+        background: #fff;
+        box-shadow: 0 0 .4rem rgba(0,0,0,0.1);
+        font-size: 1.4rem;
+      }
+    }
   }
 }
 
