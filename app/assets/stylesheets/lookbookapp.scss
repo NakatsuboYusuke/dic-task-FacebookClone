@@ -276,6 +276,9 @@ footer {
         box-shadow: 0 0 .4rem rgba(0,0,0,0.1);
         font-size: 1.4rem;
       }
+      input {
+        max-width: 48rem;
+      }
     }
   }
 }
@@ -526,6 +529,15 @@ footer {
           @include link;
         }
       }
+    }
+  }
+}
+
+/* 404, 500 ////////////////////*/
+.sec {
+  .inner {
+    .tit.error_page {
+      padding-top: 8rem;
     }
   }
 }
