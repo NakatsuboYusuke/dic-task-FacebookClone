@@ -201,7 +201,7 @@ footer {
   padding: 2rem;
   color: $light-black;
   form {
-    max-width: 48rem;
+    max-width: 44rem;
     width: 100%;
     height: auto;
     //padding: 0 2rem;
@@ -228,7 +228,7 @@ footer {
       display: flex;
       justify-content: space-between;
       input {
-        max-width: 23rem;
+        max-width: 19rem;
         width: 100%;
         height: 4rem;
         &:last-of-type {
@@ -238,7 +238,7 @@ footer {
     }
     .email, .password, .password_confirmation, .image {
       input {
-        max-width: 48rem;
+        max-width: 40rem;
         width: 100%;
         height: 4rem;
       }
