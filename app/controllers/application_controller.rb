@@ -7,6 +7,20 @@ class ApplicationController < ActionController::Base
   # security token
   protect_from_forgery with: :exception
 
+  # 404 or 500
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  rescue_from ActionController::RoutingError, with: :render_404
+  # if 404 is not catched
+  rescue_from Exception, with: :render_500
+
+  def render_404
+    render template: 'errors/404', status: 404, layout: 'application', content_type: 'text/html'
+  end
+
+  def render_500
+    render template: 'errors/500', status: 500, layout: 'application', content_type: 'text/html'
+  end
+
   private
 
   def current_user
@@ -30,20 +44,6 @@ class ApplicationController < ActionController::Base
 
   def current_user_name
     "#{current_user.first_name} #{current_user.last_name}"
-  end
-
-  # 404 or 500
-  rescue_from ActiveRecord::RecordNotFound, with: :render_404
-  rescue_from ActionController::RoutingError, with: :render_404
-  # if 404 is not catched
-  rescue_from Exception, with: :render_500
-
-  def render_404
-    render template: 'errors/404', status: 404, layout: 'application', content_type: 'text/html'
-  end
-
-  def render_500
-    render template: 'errors/500', status: 500, layout: 'application', content_type: 'text/html'
   end
 
 end
