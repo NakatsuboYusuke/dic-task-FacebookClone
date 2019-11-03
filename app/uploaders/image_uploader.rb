@@ -1,7 +1,8 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  storage :file
+  #storage :file
+  storage :fog
   #process :resize_to_limit => [50, 50]
 
   def store_dir
