@@ -46,6 +46,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
+  gem 'ed25519' # add setting
+  gem 'bcrypt_pbkdf' # add setting
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 

@@ -52,6 +52,7 @@ GEM
     autoprefixer-rails (9.6.1.1)
       execjs
     bcrypt (3.1.11)
+    bcrypt_pbkdf (1.0.1)
     better_errors (2.5.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -115,6 +116,7 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
+    ed25519 (1.2.4)
     erubi (1.8.0)
     excon (0.68.0)
     execjs (2.7.0)
@@ -301,6 +303,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bcrypt (= 3.1.11)
+  bcrypt_pbkdf
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
@@ -315,6 +318,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   dotenv-rails
+  ed25519
   faker
   fog-aws
   font-awesome-rails
